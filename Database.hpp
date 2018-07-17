@@ -10,6 +10,7 @@ public:
     void addStudent(const Student & student);
     void sortByIndex();
     void removeStudent(int index);
+    Student getStudent(size_t position) const;   // helper function
 
 private:
     Students students_;

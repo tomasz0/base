@@ -23,3 +23,9 @@ void Database::removeStudent(int index)
         students_.erase(iter);
     }
 }
+
+Student Database::getStudent(size_t position) const
+{
+    return students_[position];
+}
+
