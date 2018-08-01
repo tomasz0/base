@@ -1,17 +1,38 @@
 #pragma once
-#include "Student.hpp"
+#include "Person.hpp"
 #include <vector>
+#include <stdexcept>
 
-using Students = std::vector<Student>;
+using People = std::vector<Person*>;
+
+enum class SortCriteria
+{
+    Salary,
+    Pesel,
+    LastName
+};
+
+struct NotFound : public std::out_of_range
+{
+    NotFound(const std::string & message);
+};
 
 class Database
 {
 public:
-    void addStudent(const Student & student);
-    void sortByIndex();
-    void removeStudent(int index);
-    Student getStudent(size_t position) const;   // helper function
+    bool addPerson(Person* person);
+    Person* findByName(const std::string & lastName);
+    Person* findByPesel(const std::string & pesel);
+    void show();
+    void sort(SortCriteria criterion);
+    void generate(int number);
+    bool save(std::string filename);
+    bool read(std::string filename);
+    bool remove(const std::string & pesel);
+    bool modifySalary(const std::string & pesel, int newSalary);
+    bool modifyAddress(const std::string & pesel, const std::string & newAddress);
 
 private:
-    Students students_;
+    bool isValid(const std::string & pesel);
+    People people_;
 };

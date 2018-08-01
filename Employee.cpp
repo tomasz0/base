@@ -1,16 +1,16 @@
-#include "Student.hpp"
+#include "Employee.hpp"
 
-Student::Student(const std::string & name,
+Employee::Employee(const std::string & name,
                  const std::string & lastName,
                  const std::string & pesel,
                  Gender gender,
                  const std::string & address,
-                 int index)
+                 int salary)
     : Person(name, lastName, pesel, gender, address)
-    , index_(index)
+    , salary_(salary)
 {}
 
-int Student::getIndex() const
+int Employee::getSalary() const
 {
-    return index_;
+    return salary_;
 }

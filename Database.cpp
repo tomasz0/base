@@ -1,31 +1,24 @@
 #include "Database.hpp"
 #include <algorithm>
 
-void Database::addStudent(const Student & student)
+NotFound::NotFound(const std::string &message)
+    : std::out_of_range(message)
+{}
+
+bool Database::addPerson(Person* person)
 {
-    students_.push_back(student);
+    people_.push_back(person);
 }
 
-void Database::sortByIndex()
+Person* Database::findByName(const std::string & lastName)
 {
-    std::sort(begin(students_), end(students_), [](const auto & lhs, const auto & rhs){
-        return lhs.getIndex() < rhs.getIndex();
-    });
-}
-
-void Database::removeStudent(int index)
-{
-    auto iter = std::find_if(begin(students_), end(students_), [index](const auto & student){
-        return student.getIndex() == index;
-    });
-    if (iter != end(students_))
+    auto it = std::find_if(people_.begin(), people_.end(), [lastName](auto item)
     {
-        students_.erase(iter);
+        return item->getLastName() == lastName;
+    });
+    if (it != people_.end())
+    {
+        return *it;
     }
+    throw NotFound(lastName + " does not exist");
 }
-
-Student Database::getStudent(size_t position) const
-{
-    return students_[position];
-}
-
