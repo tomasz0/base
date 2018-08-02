@@ -12,11 +12,16 @@ Student::Student(const std::string & name,
     , index_(index)
 {}
 
-std::string Student::toString() const
+Student::Student(const std::string & packedData)
+    : Person(packedData)
+    , index_(std::stoi(packedData.substr(92, 7)))
+{}
+
+std::string Student::toString(char delimeter) const
 {
     std::stringstream ss;
     ss << "Student:  "
-       << Person::toString()
+       << Person::toString(delimeter)
        << std::setw(7) << index_ << std::endl;
     return ss.str();
 }

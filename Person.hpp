@@ -15,12 +15,13 @@ public:
            const std::string & pesel,
            Gender gender,
            const std::string & address);
+    Person(const std::string & packedData);
     virtual ~Person() = default;
 
     std::string getLastName() const;
     std::string getPesel() const;
     virtual int getSalary() const = 0;
-    virtual std::string toString() const;
+    virtual std::string toString(char delimeter = ' ') const;
 
 private:
     std::string name_;

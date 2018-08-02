@@ -12,11 +12,16 @@ Employee::Employee(const std::string & name,
     , salary_(salary)
 {}
 
-std::string Employee::toString() const
+Employee::Employee(const std::string & packedData)
+    : Person(packedData)
+    , salary_(std::stoi(packedData.substr(92, 7)))
+{}
+
+std::string Employee::toString(char delimeter) const
 {
     std::stringstream ss;
     ss << "Employee: "
-       << Person::toString()
+       << Person::toString(delimeter)
        << std::setw(7) << salary_ << " PLN" << std::endl;
     return ss.str();
 }

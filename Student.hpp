@@ -11,7 +11,8 @@ public:
             Gender gender,
             const std::string & address,
             int index);
-    std::string toString() const override;
+    Student(const std::string & packedData);
+    std::string toString(char delimeter = ' ') const override;
     int getIndex() const;
     int getSalary() const override;
 

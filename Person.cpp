@@ -14,6 +14,14 @@ Person::Person(const std::string & name,
     , address_(address)
 {}
 
+Person::Person(const std::string &packedData)
+    : name_(packedData.substr(10, 12))
+    , lastName_(packedData.substr(23, 12))
+    , pesel_(packedData.substr(36, 12))
+    , gender_(packedData.substr(49, 1) == "M" ? Gender::Male : Gender::Female)
+    , address_(packedData.substr(51, 40))
+{}
+
 std::string Person::getLastName() const
 {
     return lastName_;
@@ -24,13 +32,13 @@ std::string Person::getPesel() const
     return pesel_;
 }
 
-std::string Person::toString() const
+std::string Person::toString(char delimeter) const
 {
     std::stringstream ss;
-    ss << std::setw(12) << name_ << " "
-       << std::setw(12) << lastName_ << " "
-       << std::setw(12) << pesel_ << " "
-       << std::setw(1) << static_cast<char>(gender_) << " "
-       << std::setw(40) << address_ << " ";
+    ss << std::setw(12) << name_ << delimeter
+       << std::setw(12) << lastName_ << delimeter
+       << std::setw(12) << pesel_ << delimeter
+       << std::setw(1) << static_cast<char>(gender_) << delimeter
+       << std::setw(40) << address_ << delimeter;
     return ss.str();
 }

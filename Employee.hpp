@@ -11,7 +11,8 @@ public:
              Gender gender,
              const std::string & address,
              int salary);
-    std::string toString() const override;
+    Employee(const std::string & packedData);
+    std::string toString(char delimeter = ' ') const override;
     int getSalary() const;
 
 private:

@@ -1,4 +1,6 @@
 #include "Database.hpp"
+#include "Student.hpp"
+#include "Employee.hpp"
 #include <algorithm>
 #include <iostream>
 #include <functional>
@@ -80,6 +82,25 @@ void Database::save(std::string filename) const
     std::ofstream output(filename);
     for(const auto & person : people_)
     {
-        output << person->toString();
+        output << person->toString(':');
+    }
+}
+
+bool Database::load(std::string filename)
+{
+    std::ifstream input(filename);
+    std::string line;
+    while(std::getline(input, line))
+    {
+        if (line.find("Student:") != std::string::npos)
+        {
+            Person* person = new Student(line);
+            addPerson(person);
+        }
+        else if (line.find("Employee:") != std::string::npos)
+        {
+            Person* person = new Employee(line);
+            addPerson(person);
+        }
     }
 }

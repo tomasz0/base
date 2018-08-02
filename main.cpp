@@ -6,6 +6,7 @@
 int main()
 {
     Database db;
+//    db.load("test.txt");
     Person* jan = new Student("Jan",
                               "Kowalski",
                               "90031112275",
