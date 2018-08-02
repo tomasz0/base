@@ -27,7 +27,7 @@ public:
     void show() const;
     void sort(SortCriteria criterion);
     void generate(int number);
-    bool save(std::string filename);
+    void save(std::string filename) const;
     bool read(std::string filename);
     bool remove(const std::string & pesel);
     bool modifySalary(const std::string & pesel, int newSalary);

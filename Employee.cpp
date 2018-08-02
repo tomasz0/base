@@ -1,5 +1,5 @@
 #include "Employee.hpp"
-#include <iostream>
+#include <sstream>
 #include <iomanip>
 
 Employee::Employee(const std::string & name,
@@ -12,11 +12,13 @@ Employee::Employee(const std::string & name,
     , salary_(salary)
 {}
 
-void Employee::show() const
+std::string Employee::toString() const
 {
-    std::cout << "Employee: ";
-    Person::show();
-    std::cout << std::setw(7) << salary_ << " PLN" << std::endl;
+    std::stringstream ss;
+    ss << "Employee: "
+       << Person::toString()
+       << std::setw(7) << salary_ << " PLN" << std::endl;
+    return ss.str();
 }
 
 int Employee::getSalary() const

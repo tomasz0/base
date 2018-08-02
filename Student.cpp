@@ -1,5 +1,5 @@
 #include "Student.hpp"
-#include <iostream>
+#include <sstream>
 #include <iomanip>
 
 Student::Student(const std::string & name,
@@ -12,11 +12,13 @@ Student::Student(const std::string & name,
     , index_(index)
 {}
 
-void Student::show() const
+std::string Student::toString() const
 {
-    std::cout << "Student:  ";
-    Person::show();
-    std::cout << std::setw(7) << index_ << std::endl;
+    std::stringstream ss;
+    ss << "Student:  "
+       << Person::toString()
+       << std::setw(7) << index_ << std::endl;
+    return ss.str();
 }
 
 int Student::getIndex() const

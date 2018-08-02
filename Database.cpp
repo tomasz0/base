@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include <functional>
+#include <fstream>
 
 NotFound::NotFound(const std::string &message)
     : std::out_of_range(message)
@@ -37,7 +38,7 @@ void Database::show() const
     std::cout << "=== DATABASE: ===" << std::endl;
     for(const auto & person : people_)
     {
-        person->show();
+        std::cout << person->toString();
     }
 }
 
@@ -72,4 +73,13 @@ void Database::sortBySalary()
     {
         return lhs->getSalary() >= rhs->getSalary();
     });
+}
+
+void Database::save(std::string filename) const
+{
+    std::ofstream output(filename);
+    for(const auto & person : people_)
+    {
+        output << person->toString();
+    }
 }

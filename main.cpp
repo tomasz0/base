@@ -32,6 +32,8 @@ int main()
     db.sort(SortCriteria::Salary);
     db.show();
 
+    db.save("test.txt");
+
     delete jan;
     delete ala;
 }

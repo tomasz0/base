@@ -17,10 +17,10 @@ public:
            const std::string & address);
     virtual ~Person() = default;
 
-    virtual void show() const;
     std::string getLastName() const;
     std::string getPesel() const;
     virtual int getSalary() const = 0;
+    virtual std::string toString() const;
 
 private:
     std::string name_;
