@@ -20,7 +20,8 @@ public:
 
     std::string getLastName() const;
     std::string getPesel() const;
-    virtual int getSalary() const = 0;
+    virtual int getSalary() const;
+    virtual void setSalary(unsigned int);
     virtual std::string toString(char delimeter = ' ') const;
 
 private:

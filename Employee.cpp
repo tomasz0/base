@@ -30,3 +30,8 @@ int Employee::getSalary() const
 {
     return salary_;
 }
+
+void Employee::setSalary(unsigned int newSalary)
+{
+    salary_ = newSalary;
+}

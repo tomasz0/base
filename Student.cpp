@@ -30,8 +30,3 @@ int Student::getIndex() const
 {
     return index_;
 }
-
-int Student::getSalary() const
-{
-    return 0;
-}

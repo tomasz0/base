@@ -40,7 +40,8 @@ int main()
     db.sort(SortCriteria::Salary);
     db.show("after sort");
 
-    db.show("after remove");
+    db.modifySalary("70031112275", 6000);
+    db.show("after modifySalary");
 
     db.save("test.txt");
 

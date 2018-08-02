@@ -13,8 +13,9 @@ public:
              int salary);
     Employee(const std::string & packedData);
     std::string toString(char delimeter = ' ') const override;
-    int getSalary() const;
+    int getSalary() const override;
+    void setSalary(unsigned int) override;
 
 private:
-    int salary_;
+    unsigned int salary_;
 };

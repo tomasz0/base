@@ -32,6 +32,14 @@ std::string Person::getPesel() const
     return pesel_;
 }
 
+int Person::getSalary() const
+{
+    return 0;
+}
+
+void Person::setSalary(unsigned int)
+{}
+
 std::string Person::toString(char delimeter) const
 {
     std::stringstream ss;
