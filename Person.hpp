@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 
-enum class Gender
+enum class Gender : const char
 {
-    Male,
-    Female
+    Male = 'M',
+    Female = 'F'
 };
 
 class Person
@@ -15,7 +15,9 @@ public:
            const std::string & pesel,
            Gender gender,
            const std::string & address);
+    virtual ~Person() = default;
 
+    virtual void show() const;
     std::string getLastName() const;
     std::string getPesel() const;
 

@@ -1,5 +1,6 @@
 #include "Database.hpp"
 #include <algorithm>
+#include <iostream>
 
 NotFound::NotFound(const std::string &message)
     : std::out_of_range(message)
@@ -29,3 +30,13 @@ Person* Database::find(std::function<bool(People::value_type)> what) const
     }
     throw NotFound("Does not exist");
 }
+
+void Database::show() const
+{
+    std::cout << "=== DATABASE: ===" << std::endl;
+    for(const auto & person : people_)
+    {
+        person->show();
+    }
+}
+

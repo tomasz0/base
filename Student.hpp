@@ -11,6 +11,7 @@ public:
             Gender gender,
             const std::string & address,
             int index);
+    void show() const override;
     int getIndex() const;
 
 private:

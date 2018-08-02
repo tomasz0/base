@@ -11,6 +11,7 @@ public:
              Gender gender,
              const std::string & address,
              int salary);
+    void show() const override;
     int getSalary() const;
 
 private:

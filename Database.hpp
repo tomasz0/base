@@ -24,7 +24,7 @@ public:
     bool addPerson(Person* person);
     Person* findByName(const std::string & lastName) const;
     Person* findByPesel(const std::string & pesel) const;
-    void show();
+    void show() const;
     void sort(SortCriteria criterion);
     void generate(int number);
     bool save(std::string filename);
