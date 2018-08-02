@@ -17,12 +17,12 @@ bool Database::addPerson(Person* person)
 
 Person* Database::findByName(const std::string & lastName) const
 {
-    return find([lastName](auto item){ return item->getLastName() == lastName; });
+    return find([lastName](const auto & item){ return item->getLastName() == lastName; });
 }
 
 Person* Database::findByPesel(const std::string & pesel) const
 {
-    return find([pesel](auto item){ return item->getPesel() == pesel; });
+    return find([pesel](const auto & item){ return item->getPesel() == pesel; });
 }
 
 Person* Database::find(std::function<bool(People::value_type)> what) const
@@ -35,9 +35,9 @@ Person* Database::find(std::function<bool(People::value_type)> what) const
     throw NotFound("Does not exist");
 }
 
-void Database::show() const
+void Database::show(const std::string & info) const
 {
-    std::cout << "=== DATABASE: ===" << std::endl;
+    std::cout << "=== DATABASE: " << info << " ===" << std::endl;
     for(const auto & person : people_)
     {
         std::cout << person->toString();
@@ -103,4 +103,13 @@ bool Database::load(std::string filename)
             addPerson(person);
         }
     }
+}
+
+bool Database::remove(const std::string & pesel)
+{
+    auto it = std::remove_if(people_.begin(), people_.end(), [pesel](const auto & person)
+    {
+        return person->getPesel() == pesel;
+    });
+    people_.erase(it, people_.end());
 }

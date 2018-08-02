@@ -6,7 +6,14 @@
 int main()
 {
     Database db;
-//    db.load("test.txt");
+    db.load("test.txt");
+
+    db.show("after load");
+    db.remove("90031112275");
+    db.remove("70031112275");
+    db.remove("11111111111");
+    db.show("after remove");
+
     Person* jan = new Student("Jan",
                               "Kowalski",
                               "90031112275",
@@ -29,9 +36,11 @@ int main()
     auto kowalska = db.findByPesel("70031112275");
     assert(kowalska == ala);
 
-    db.show();
+    db.show("after insert");
     db.sort(SortCriteria::Salary);
-    db.show();
+    db.show("after sort");
+
+    db.show("after remove");
 
     db.save("test.txt");
 
