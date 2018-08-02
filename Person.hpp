@@ -17,6 +17,7 @@ public:
            const std::string & address);
 
     std::string getLastName() const;
+    std::string getPesel() const;
 
 private:
     std::string name_;

@@ -2,6 +2,7 @@
 #include "Person.hpp"
 #include <vector>
 #include <stdexcept>
+#include <functional>
 
 using People = std::vector<Person*>;
 
@@ -21,8 +22,8 @@ class Database
 {
 public:
     bool addPerson(Person* person);
-    Person* findByName(const std::string & lastName);
-    Person* findByPesel(const std::string & pesel);
+    Person* findByName(const std::string & lastName) const;
+    Person* findByPesel(const std::string & pesel) const;
     void show();
     void sort(SortCriteria criterion);
     void generate(int number);
@@ -34,5 +35,6 @@ public:
 
 private:
     bool isValid(const std::string & pesel);
+    Person* find(std::function<bool(People::value_type)> what) const;
     People people_;
 };

@@ -10,15 +10,22 @@ bool Database::addPerson(Person* person)
     people_.push_back(person);
 }
 
-Person* Database::findByName(const std::string & lastName)
+Person* Database::findByName(const std::string & lastName) const
 {
-    auto it = std::find_if(people_.begin(), people_.end(), [lastName](auto item)
-    {
-        return item->getLastName() == lastName;
-    });
+    return find([lastName](auto item){ return item->getLastName() == lastName; });
+}
+
+Person* Database::findByPesel(const std::string & pesel) const
+{
+    return find([pesel](auto item){ return item->getPesel() == pesel; });
+}
+
+Person* Database::find(std::function<bool(People::value_type)> what) const
+{
+    auto it = std::find_if(people_.begin(), people_.end(), what);
     if (it != people_.end())
     {
         return *it;
     }
-    throw NotFound(lastName + " does not exist");
+    throw NotFound("Does not exist");
 }

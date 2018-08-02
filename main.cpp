@@ -12,6 +12,12 @@ int main()
                               "ul. Wróblewskiego, 51-627 Wrocław",
                               123456);
     db.addPerson(jan);
+
     auto kowalski = db.findByName("Kowalski");
     assert(kowalski == jan);
+
+    kowalski = db.findByPesel("90031112275");
+    assert(kowalski == jan);
+
+    delete jan;
 }

@@ -16,3 +16,8 @@ std::string Person::getLastName() const
 {
     return lastName_;
 }
+
+std::string Person::getPesel() const
+{
+    return pesel_;
+}
