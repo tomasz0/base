@@ -13,6 +13,7 @@ public:
             int index);
     void show() const override;
     int getIndex() const;
+    int getSalary() const override;
 
 private:
     int index_;

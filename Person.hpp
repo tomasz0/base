@@ -20,6 +20,7 @@ public:
     virtual void show() const;
     std::string getLastName() const;
     std::string getPesel() const;
+    virtual int getSalary() const = 0;
 
 private:
     std::string name_;

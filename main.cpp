@@ -29,6 +29,8 @@ int main()
     assert(kowalska == ala);
 
     db.show();
+    db.sort(SortCriteria::Salary);
+    db.show();
 
     delete jan;
     delete ala;

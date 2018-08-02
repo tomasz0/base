@@ -1,6 +1,7 @@
 #include "Database.hpp"
 #include <algorithm>
 #include <iostream>
+#include <functional>
 
 NotFound::NotFound(const std::string &message)
     : std::out_of_range(message)
@@ -40,3 +41,35 @@ void Database::show() const
     }
 }
 
+void Database::sort(SortCriteria criterion)
+{
+    switch (criterion)
+    {
+    case SortCriteria::LastName: { sortByName(); break; }
+    case SortCriteria::Pesel:    { sortByPesel(); break; }
+    case SortCriteria::Salary:   { sortBySalary(); break; }
+    }
+}
+
+void Database::sortByName()
+{
+    std::sort(people_.begin(), people_.end(), [](Person* lhs, Person* rhs)
+    {
+        return lhs->getLastName() < rhs->getLastName();
+    });
+}
+void Database::sortByPesel()
+{
+    std::sort(people_.begin(), people_.end(), [](Person* lhs, Person* rhs)
+    {
+        return lhs->getPesel() < rhs->getPesel();
+    });
+}
+
+void Database::sortBySalary()
+{
+    std::sort(people_.begin(), people_.end(), [](Person* lhs, Person* rhs)
+    {
+        return lhs->getSalary() >= rhs->getSalary();
+    });
+}

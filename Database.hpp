@@ -36,5 +36,9 @@ public:
 private:
     bool isValid(const std::string & pesel);
     Person* find(std::function<bool(People::value_type)> what) const;
+    void sortByName();
+    void sortByPesel();
+    void sortBySalary();
+
     People people_;
 };
