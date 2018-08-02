@@ -86,7 +86,7 @@ void Database::save(std::string filename) const
     }
 }
 
-bool Database::load(std::string filename)
+void Database::load(std::string filename)
 {
     std::ifstream input(filename);
     std::string line;
@@ -105,7 +105,7 @@ bool Database::load(std::string filename)
     }
 }
 
-bool Database::remove(const std::string & pesel)
+void Database::remove(const std::string & pesel)
 {
     auto it = std::remove_if(people_.begin(), people_.end(), [pesel](const auto & person)
     {
@@ -113,3 +113,4 @@ bool Database::remove(const std::string & pesel)
     });
     people_.erase(it, people_.end());
 }
+

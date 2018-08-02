@@ -28,8 +28,8 @@ public:
     void sort(SortCriteria criterion);
     void generate(int number);
     void save(std::string filename) const;
-    bool load(std::string filename);
-    bool remove(const std::string & pesel);
+    void load(std::string filename);
+    void remove(const std::string & pesel);
     bool modifySalary(const std::string & pesel, int newSalary);
     bool modifyAddress(const std::string & pesel, const std::string & newAddress);
 
