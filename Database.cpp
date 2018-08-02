@@ -114,11 +114,14 @@ void Database::remove(const std::string & pesel)
     people_.erase(it, people_.end());
 }
 
-bool Database::modifySalary(const std::string & pesel, unsigned int newSalary)
+void Database::modifySalary(const std::string & pesel, unsigned int newSalary)
 {
     auto person = findByPesel(pesel);
-    if (person)
-    {
-        person->setSalary(newSalary);
-    }
+    person->setSalary(newSalary);
+}
+
+void Database::modifyAddress(const std::string & pesel, const std::string & newAddress)
+{
+    auto person = findByPesel(pesel);
+    person->setAddress(newAddress);
 }

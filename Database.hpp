@@ -30,8 +30,8 @@ public:
     void save(std::string filename) const;
     void load(std::string filename);
     void remove(const std::string & pesel);
-    bool modifySalary(const std::string & pesel, unsigned int newSalary);
-    bool modifyAddress(const std::string & pesel, const std::string & newAddress);
+    void modifySalary(const std::string & pesel, unsigned int newSalary);
+    void modifyAddress(const std::string & pesel, const std::string & newAddress);
 
 private:
     bool isValid(const std::string & pesel);

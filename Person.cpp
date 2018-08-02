@@ -40,6 +40,11 @@ int Person::getSalary() const
 void Person::setSalary(unsigned int)
 {}
 
+void Person::setAddress(const std::string & newAddress)
+{
+    address_ = newAddress;
+}
+
 std::string Person::toString(char delimeter) const
 {
     std::stringstream ss;

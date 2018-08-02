@@ -43,6 +43,9 @@ int main()
     db.modifySalary("70031112275", 6000);
     db.show("after modifySalary");
 
+    db.modifyAddress("90031112275", "Lotnicza 11, 50-001 Wrocław");
+    db.show("after modifyAddress");
+
     db.save("test.txt");
 
     delete jan;
