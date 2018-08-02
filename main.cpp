@@ -7,8 +7,8 @@ int main()
 {
     Database db;
     db.load("test.txt");
-
     db.show("after load");
+
     db.remove("90031112275");
     db.remove("70031112275");
     db.remove("11111111111");
@@ -20,15 +20,15 @@ int main()
                               Gender::Male,
                               "ul. Wróblewskiego 12, 51-627 Wrocław",
                               123456);
-    db.addPerson(jan);
-
     Person* ala = new Employee("Ala",
                                "Kowalska",
                                "70031112275",
                                Gender::Female,
                                "plac Wróblewskiego 13, 50-626 Wrocław",
                                5000);
+    db.addPerson(jan);
     db.addPerson(ala);
+    db.show("after insert");
 
     auto kowalski = db.findByName("Kowalski");
     assert(kowalski == jan);
@@ -36,7 +36,6 @@ int main()
     auto kowalska = db.findByPesel("70031112275");
     assert(kowalska == ala);
 
-    db.show("after insert");
     db.sort(SortCriteria::Salary);
     db.show("after sort");
 
