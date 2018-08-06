@@ -10,9 +10,9 @@ NotFound::NotFound(const std::string &message)
     : std::out_of_range(message)
 {}
 
-bool Database::addPerson(Person* person)
+void Database::addPerson(Person* person)
 {
-    people_.push_back(person);
+    people_.emplace_back(person);
 }
 
 Person* Database::findByName(const std::string & lastName) const

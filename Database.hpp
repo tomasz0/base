@@ -21,7 +21,7 @@ struct NotFound : public std::out_of_range
 class Database
 {
 public:
-    bool addPerson(Person* person);
+    void addPerson(Person* person);
     Person* findByName(const std::string & lastName) const;
     Person* findByPesel(const std::string & pesel) const;
     void show(const std::string & info) const;
