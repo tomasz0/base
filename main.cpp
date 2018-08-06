@@ -1,31 +1,52 @@
 #include "Database.hpp"
 #include "Student.hpp"
+#include "Employee.hpp"
 #include <cassert>
 
 int main()
 {
     Database db;
+    db.load("test.txt");
+    db.show("after load");
 
-    Student jan("Jan", "Kowalski", 166666);
-    db.addStudent(jan);
-    Student alicja("Alicja", "Nowak", 112233);
-    db.addStudent(alicja);
-    Student adam("Adam", "Adamski", 222222);
-    db.addStudent(adam);
+    db.remove("90031112275");
+    db.remove("70031112275");
+    db.remove("11111111111");
+    db.show("after remove");
 
-    assert(db.getStudent(0).getIndex() == 166666);
-    assert(db.getStudent(1).getIndex() == 112233);
-    assert(db.getStudent(2).getIndex() == 222222);
+    Person* jan = new Student("Jan",
+                              "Kowalski",
+                              "90031112275",
+                              Gender::Male,
+                              "ul. Wróblewskiego 12, 51-627 Wrocław",
+                              123456);
+    Person* ala = new Employee("Ala",
+                               "Kowalska",
+                               "70031112275",
+                               Gender::Female,
+                               "plac Wróblewskiego 13, 50-626 Wrocław",
+                               5000);
+    db.addPerson(jan);
+    db.addPerson(ala);
+    db.show("after insert");
 
-    db.sortByIndex();
-    
-    assert(db.getStudent(0).getIndex() == 112233);
-    assert(db.getStudent(1).getIndex() == 166666);
-    assert(db.getStudent(2).getIndex() == 222222);
-    
-    db.removeStudent(111111);
-    db.removeStudent(166666);
-    
-    assert(db.getStudent(0).getIndex() == 112233);
-    assert(db.getStudent(1).getIndex() == 222222);
+    auto kowalski = db.findByName("Kowalski");
+    assert(kowalski == jan);
+
+    auto kowalska = db.findByPesel("70031112275");
+    assert(kowalska == ala);
+
+    db.sort(SortCriteria::Salary);
+    db.show("after sort");
+
+    db.modifySalary("70031112275", 6000);
+    db.show("after modifySalary");
+
+    db.modifyAddress("90031112275", "Lotnicza 11, 50-001 Wrocław");
+    db.show("after modifyAddress");
+
+    db.save("test.txt");
+
+    delete jan;
+    delete ala;
 }

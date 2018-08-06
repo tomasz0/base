@@ -1,0 +1,18 @@
+sudo: required
+language: cpp
+branches:
+  only:
+  - master
+  - final
+os:
+  - linux
+  - osx
+compiler:
+  - g++
+  - clang
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - ./Database
