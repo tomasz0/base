@@ -15,9 +15,14 @@ void Database::addPerson(Person* person)
     people_.emplace_back(person);
 }
 
-Person* Database::findByName(const std::string & lastName) const
+People Database::findByName(const std::string & lastName) const
 {
-    return find([lastName](const auto & item){ return item->getLastName() == lastName; });
+    std::vector<Person*> matching;
+    std::copy_if(people_.begin(), people_.end(), std::back_inserter(matching), [lastName](const auto & item)
+    {
+        return item->getLastName() == lastName;
+    });
+    return matching;
 }
 
 Person* Database::findByPesel(const std::string & pesel) const

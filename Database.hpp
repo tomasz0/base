@@ -22,7 +22,7 @@ class Database
 {
 public:
     void addPerson(Person* person);
-    Person* findByName(const std::string & lastName) const;
+    People findByName(const std::string & lastName) const;
     Person* findByPesel(const std::string & pesel) const;
     void show(const std::string & info) const;
     void sort(SortCriteria criterion);
