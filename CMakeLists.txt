@@ -14,6 +14,8 @@ set(SOURCES
     Employee.cpp
     Student.hpp
     Student.cpp
+    PeselValidation.hpp
+    PeselValidation.cpp
     main.cpp
 )
 

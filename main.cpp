@@ -1,10 +1,20 @@
 #include "Database.hpp"
 #include "Student.hpp"
 #include "Employee.hpp"
+#include "PeselValidation.hpp"
 #include <cassert>
 
 int main()
 {
+    assert(not isPeselValid("1234567a901", Gender::Female) && "not a digit");
+    assert(not isPeselValid("12345678901", Gender::Female) && "invalid month");
+    assert(not isPeselValid("12325678901", Gender::Female) && "invalid day");
+    assert(not isPeselValid("03222978901", Gender::Female) && "not leap year");
+    assert(not isPeselValid("04222978911", Gender::Female) && "not a female");
+    assert(not isPeselValid("04222978901", Gender::Male) && "not a male");
+    assert(not isPeselValid("04222978901", Gender::Female) && "invalid checksum");
+    assert(isPeselValid("04222978907", Gender::Female) && "valid");
+
     Database db;
     db.load("test.txt");
     db.show("after load");
