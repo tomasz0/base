@@ -1,0 +1,3 @@
+/home/tomasz/C++/StudentsDatabase_Luki/build/CMakeFiles/rebuild_cache.dir
+/home/tomasz/C++/StudentsDatabase_Luki/build/CMakeFiles/Database.dir
+/home/tomasz/C++/StudentsDatabase_Luki/build/CMakeFiles/edit_cache.dir

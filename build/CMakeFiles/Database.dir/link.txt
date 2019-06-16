@@ -1,0 +1,1 @@
+clang++  -g  -rdynamic CMakeFiles/Database.dir/Database.cpp.o CMakeFiles/Database.dir/Person.cpp.o CMakeFiles/Database.dir/Employee.cpp.o CMakeFiles/Database.dir/Student.cpp.o CMakeFiles/Database.dir/PeselValidation.cpp.o CMakeFiles/Database.dir/main.cpp.o  -o Database 
